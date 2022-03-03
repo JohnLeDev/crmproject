@@ -29,7 +29,7 @@ public class LoginFilter implements Filter {
 		
 		String action = req.getServletPath();
 		System.out.println(action);
-		if(!action.equals("/login")) {
+		if(!action.equals("/login") && !action.equals("/register")) {
 			HttpSession session = req.getSession();
 			if(session.getAttribute(UtilConstant.USER_LOGIN) == null) {
 				resp.sendRedirect(req.getContextPath() + ServletConstant.LOGIN);
