@@ -13,7 +13,7 @@ import com.blackhat.crmproject.service.AuthService;
 import com.blackhat.crmproject.service.AuthServiceImp;
 import com.blackhat.crmproject.util.ServletConstant;
 
-@WebServlet(name = "login", urlPatterns= {ServletConstant.LOGIN, ServletConstant.LOGOUT })
+@WebServlet(name = "login", urlPatterns= {ServletConstant.LOGIN, ServletConstant.LOGOUT, ServletConstant.REGISTER })
 public class LoginServlet extends HttpServlet {
 	
 	private AuthService authService;
@@ -29,7 +29,9 @@ public class LoginServlet extends HttpServlet {
 		case ServletConstant.LOGIN:
 			req.getRequestDispatcher(ServletConstant.JSPLOGIN).forward(req, resp);
 			break;
-
+		case ServletConstant.REGISTER:
+			req.getRequestDispatcher(ServletConstant.JSPREGISTER).forward(req, resp);
+			break;
 		case ServletConstant.LOGOUT:
 			break;
 		default: 
