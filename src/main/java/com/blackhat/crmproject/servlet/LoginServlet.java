@@ -29,7 +29,6 @@ public class LoginServlet extends HttpServlet {
 		case ServletConstant.LOGIN:
 			req.getRequestDispatcher(ServletConstant.JSPLOGIN).forward(req, resp);
 			break;
-
 		case ServletConstant.LOGOUT:
 			break;
 		default: 

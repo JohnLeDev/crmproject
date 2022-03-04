@@ -31,11 +31,17 @@ public class LoginFilter implements Filter {
 		System.out.println(action);
 		if(!action.equals("/login")) {
 			HttpSession session = req.getSession();
+			session.setAttribute("PROJECT", "project");
+			if (session.getAttribute("PROJECT") !=null) {
+				req.getRequestDispatcher(ServletConstant.JSPPOJECTS).forward(req, resp);
+				return;
+			}
 			if(session.getAttribute(UtilConstant.USER_LOGIN) == null) {
 				resp.sendRedirect(req.getContextPath() + ServletConstant.LOGIN);
 				return;
 			}
-		}else
+			
+		}
 		chain.doFilter(request, response);
 	}
 
