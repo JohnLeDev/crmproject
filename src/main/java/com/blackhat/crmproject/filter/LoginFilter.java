@@ -1,4 +1,4 @@
-package com.blackthat.crmproject.filter;
+package com.blackhat.crmproject.filter;
 
 import java.io.IOException;
 
@@ -14,10 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-import com.blackhat.crmproject.util.ServletConstant;
+import com.blackhat.crmproject.util.UrlConst;
 import com.blackhat.crmproject.util.UtilConstant;
 
-@WebFilter(urlPatterns = ServletConstant.ALL)
+@WebFilter(urlPatterns = UrlConst.ALL)
 public class LoginFilter implements Filter {
 
 	@Override
@@ -27,16 +27,19 @@ public class LoginFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
 		
-		String action = req.getServletPath();
-		System.out.println(action);
-		if(!action.equals("/login")) {
-			HttpSession session = req.getSession();
-			if(session.getAttribute(UtilConstant.USER_LOGIN) == null) {
-				resp.sendRedirect(req.getContextPath() + ServletConstant.LOGIN);
+		String path = req.getServletPath();
+		System.out.println(path);
+		if( !(path.equals(UrlConst.LOGIN)) ) {
+			Object user = req.getSession().getAttribute("user");
+			if(user == null) {
+				resp.sendRedirect(req.getContextPath() + UrlConst.LOGIN);
 				return;
+			} else {
+				chain.doFilter(request, response);
 			}
-		}else
+		} else {
 		chain.doFilter(request, response);
-	}
+		}
+	}	
 
 }

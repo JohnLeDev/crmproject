@@ -5,13 +5,31 @@ public class UserDto {
 	private String email;
 	private String password;
 	private String fullname;
-	private String avatar;
 	private int roleId;
+	private String phone; // Kha them 3/2/2022
+	private String address;
+	/*
+	private String avatar;
 	private String roleDesc;
+	*/
 	
 	public UserDto() {}
 	
-	public UserDto(String email, String password, String fullname, int roleId) {
+	public UserDto(int id, String email, String password, String fullname, int roleId, String phone, String address) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.password = password;
+		this.fullname = fullname;
+		this.roleId = roleId;
+		this.phone = phone;
+		this.address = address;
+	}
+
+
+	
+	
+	/*public UserDto(String email, String password, String fullname, int roleId) {
 		super();
 		this.email = email;
 		this.password = password;
@@ -34,60 +52,91 @@ public class UserDto {
 		this.roleId = roleId;
 		this.roleDesc = roleDesc;
 	}
-
+	*/
+	
+	
 	public int getId() {
 		return id;
 	}
+
+
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
+
+
 	public String getEmail() {
 		return email;
 	}
+
+
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+
+
 	public String getPassword() {
 		return password;
 	}
+
+
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+
+
 	public String getFullname() {
 		return fullname;
 	}
+
+
 
 	public void setFullname(String fullname) {
 		this.fullname = fullname;
 	}
 
-	public String getAvatar() {
-		return avatar;
-	}
 
-	public void setAvatar(String avatar) {
-		this.avatar = avatar;
-	}
 
 	public int getRoleId() {
 		return roleId;
 	}
 
+
+
 	public void setRoleId(int roleId) {
 		this.roleId = roleId;
 	}
 
-	public String getRoleDesc() {
-		return roleDesc;
+
+
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setRoleDesc(String roleDesc) {
-		this.roleDesc = roleDesc;
+
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+
+
+	public String getAddress() {
+		return address;
+	}
+
+
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 }
+
+
+	
