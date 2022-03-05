@@ -16,6 +16,9 @@ public interface UserRepository {
 	}
 	public int deleteById(int id);
 	public int add(UserDto userDto);
-	public int update(UserDto userDto);
+	public static int update(UserDto userDto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 }

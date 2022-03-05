@@ -69,6 +69,7 @@ public class LoginServlet extends HttpServlet {
 			break;
 
 		case UrlConst.LOGOUT:
+			req.getSession().invalidate(); // nên check lại (dung de kill session)
 			//gui lai login servlet
 			resp.sendRedirect(req.getContextPath() + UrlConst.LOGIN);
 			break;
@@ -81,6 +82,7 @@ public class LoginServlet extends HttpServlet {
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
 		String message;
+		
 		//UserDto userDto = authService.login();
 		
 		// tao cookie
@@ -97,9 +99,9 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = req.getSession();
 			session.setAttribute("user", curUserOpt.get());
 			session.setMaxInactiveInterval(300);
-			User curUser = UserRepository.findByEmail("email");
+			int roleId = curUserOpt.get().getRoleId();
 			//ktra role id de dieu huong
-			servNavigator(req, resp, curUser);
+			servNavigator(req, resp, roleId);
 		} else {
 			message = "Ten dang nhap hoac mat khau khong dung, vui long kiem tra lai";
 			req.setAttribute("message", message);
@@ -108,10 +110,10 @@ public class LoginServlet extends HttpServlet {
 		}
 	}
 
-	private void servNavigator(HttpServletRequest req, HttpServletResponse resp, User curUser)
+	private void servNavigator(HttpServletRequest req, HttpServletResponse resp, int roleId)
 			throws IOException, ServletException {
 		String message;
-		switch(curUser.getRoleId()) {
+		switch(roleId) {
 		case 1://admin
 			resp.sendRedirect(req.getContextPath() + UrlConst.ADMIN);
 			break;

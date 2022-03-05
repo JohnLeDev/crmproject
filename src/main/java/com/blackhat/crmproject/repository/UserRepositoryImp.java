@@ -117,17 +117,18 @@ public class UserRepositoryImp implements UserRepository {
 
 	public int update(UserDto userDto) {
 		int result = -1;
-		String query = "UPDATE user SET email = ?, address = ?, name =?, phone =?, role_id =?, password =?";
+		String query = "UPDATE user SET email = ?, address = ?, name =?, phone =?, role_id =?, password =? WHERE id = ?";
 		Connection connection = DBConnection.getConnection();
 		try {
 			PreparedStatement statement = connection.prepareStatement(query);
-			
+		
 			statement.setString(1, userDto.getEmail());
 			statement.setString(2, userDto.getAddress());
 			statement.setString(3, userDto.getFullname());
 			statement.setString(4, userDto.getPhone());
 			statement.setLong(5, userDto.getRoleId());
 			statement.setString(6, userDto.getPassword());
+			statement.setLong(7, userDto.getId());
 
 			result = statement.executeUpdate();
 			

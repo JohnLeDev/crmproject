@@ -6,6 +6,8 @@ public class JspConst {
 	
 	public static final String ADMIN = "/WEB-INF/views/admin/admin_dashboard.jsp";
 	public static final String LEADER = "/WEB-INF/views/leader/leader_dashboard.jsp";
-	public static final String USER = "/WEB-INF/views/user/user_dashboard.jsp";
+	
+	public static final String USER_DASHBOARD = "/WEB-INF/views/user/user_dashboard.jsp";
+	public static final String USER_UPDATE_PROFILE = "/WEB-INF/views/user/user_update_profile.jsp";
 	
 }
